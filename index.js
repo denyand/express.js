@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 app.get("/" , (req, res) => {
-    res.send("<h1>Home Page</h1>");
+    res.send("<h1>Home Page Deny</h1>");
 }) 
 
 app.listen(PORT, () => {
