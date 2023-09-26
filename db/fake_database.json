@@ -1,0 +1,44 @@
+[
+    {
+        "id":1,
+        "name": "deny",
+        "age": 21,
+        "cars":  [
+            {
+                "name": "BMW",
+                "models": [
+                    "X1",
+                    "M4"
+                ]
+            },
+            {
+                "name": "Honda",
+                "models": [
+                    "Civic",
+                    "CR_v"
+                ]
+            } 
+        ]
+    },
+    {
+        "id":2,
+        "name": "fikri",
+        "age": 20,
+        "cars": [
+            {
+                "name": "Toyota",
+                "models": [
+                    "Venturer",
+                    "Fortuner"
+                ]
+            },
+            {
+                "name": "Honda",
+                "models": [
+                    "BR-V",
+                    "CR_v"
+                ]
+            }
+        ]  
+    }
+]
