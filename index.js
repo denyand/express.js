@@ -22,6 +22,12 @@ app.get('/users', (req, res) => {
     //jika nnti mau ngirim database real maka perlu melakukan query ke database, misalnya kalau di mySql atau postgree yaitu dengan SELECT * FROM USERS
 })
 
+//get by id
+app.get('/users/:userid', (req, res) =>{
+    console.log(req.params)
+//desturcturing an object
+    const {userid, name} = req.params.id
+})
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
 });
