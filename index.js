@@ -3,31 +3,35 @@ const express = require('express');
 
 //buat baca db fake
 const fs = require('fs')
+
+const {userRoutes} = require('./routes/userRoutes')
+const {productRoutes} = require('./routes/productRoutes')
+const pathTopublicFolder = __dirname + 'public'
 const app = express();
 const PORT = 3000;
 
-
+//merupakan function middleware yang dibuat oleh express yg membantu kita dalam memudahkan serving static files
 app.use(express.static('public'))
-app.get("/" , (req, res) => {
 
+
+app.get("/" , (req, res) => { 
+    res.send("haloo semua")
 }) 
 
-app.get('/users', (req, res) => {
-//task menerima request dari user, ke endpoint '/users harapan nya dari api yang dibuat akan meberikan response berupa data user, untuk kali ini daimbil dri fake_database.json
-    fs.readFile('./db/fake_database.json', 'utf-8',(error, data) => {
-    if (error) res.send("terjadi kesalahan pada pembacaan file")
-    //if (error) throw error
-    res.send(JSON.parse(data))
-    })
-    //jika nnti mau ngirim database real maka perlu melakukan query ke database, misalnya kalau di mySql atau postgree yaitu dengan SELECT * FROM USERS
+app.get('/about', (req, res) => {
+console.log(__dirname)
+res.sendFile('./public/about.html', { root:
+__dirname})
 })
 
-//get by id
-app.get('/users/:userid', (req, res) =>{
-    console.log(req.params)
-//desturcturing an object
-    const {userid, name} = req.params.id
-})
+//CRUD
+//memecah rute rute yang banyak menjadi kecil
+//kita bisa langsung pakai rute yang sudah dibuat di file lain dengan cara di import dulu, lalu kita pakai dengan app.use(namaRuteYangDiImpor)
+app.use(userRoutes)
+
+//untuk memakai productRoutes
+app.use("/products", productRoutes)
+
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
 });
